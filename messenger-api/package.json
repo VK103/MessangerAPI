@@ -1,0 +1,40 @@
+{
+  "name": "messenger-api",
+  "version": "1.0.0",
+  "description": "Messenger API",
+  "main": "server.js",
+  "author": "Artem Bogoslavskiy",
+  "license": "",
+  "private": false,
+  "eslintConfig": {
+    "extends": "universe/node"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "start-as-prod": "NODE_ENV=production nodemon src/server.js --exec babel-node",
+    "development": "NODE_ENV=development nodemon src/server.js --exec babel-node",
+    "production": "pm2 delete messenger-api || true && pm2 start ecosystem.config.js --env production",
+    "staging": "pm2 delete messenger-api || true && pm2 start ecosystem.config.js --env staging"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "expo-server-sdk": "^3.2.0",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.5.5",
+    "morgan": "^1.9.1",
+    "pm2": "^3.5.0",
+    "redis": "^2.8.0",
+    "socket.io-emitter": "^3.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+    "eslint": "^5.16.0",
+    "eslint-config-universe": "^1.0.7",
+    "nodemon": "^1.19.0",
+    "prettier": "^1.17.0"
+  }
+}

@@ -1,0 +1,23 @@
+export default {
+  0: 'An unknown error',
+  3: 'Incorrect Object Id',
+  4: 'Object not found',
+  5: 'User authorization failed: no access_token passed.',
+  6: 'Access denied',
+  7: 'the user to whom you are sending messages does not exist',
+  100: 'Incorrect parameters',
+  121: 'Error database connection',
+  123: 'Url address incorrect',
+  124: 'Url address too short',
+  125: 'Exceeded the number of tags',
+  126: 'Error parse object',
+  127: 'You cannot delete a single object.',
+  128: 'Object not found',
+  1000: 'Invalid phone number',
+  1001: 'This phone is used by another user',
+  1002: 'The phone or password you entered is incorrect',
+  1003: 'Application does not exist',
+  1004: 'This phone is used by another user',
+  1005: 'User is not exist. Need sign up user',
+  1006: 'Error calculate signature'
+};

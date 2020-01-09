@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+	<title>React Native Messenger App With Backend - Based on Expo</title>
+ 	<meta name="description" content="A full messenger application with dialogs, statuses read/unread, push notifications and the ability to upload and send photos. ">
+	<meta name="author" content="Artem Bogoslavskiy">
+	<meta name="copyright" content="Artem Bogoslavskiy">
+	<meta name="generator" content="Documenter v2.0 https://evp.to/documenter">
+	<meta name="date" content="2019-08-04T00:00:00+02:00">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="assets/css/documenter_style.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    
+
+	<style>
+		html, body{background-color:#FFFFFF;color:#383838;}
+		h1,h2,h3,h4,h5,h6{color:#383838;}
+		section table{background-color:#FFFFFF;}
+		::-moz-selection{background:#444444;color:#DDDDDD;}
+		::selection{background:#444444;color:#DDDDDD;}
+		a.brand{background-image:url(http://static.revaxarts-themes.com/envato.png);}
+		a, a:hover, a:active{color:#0000FF;}
+		hr{border-top:1px solid #EBEBEB;border-bottom:1px solid #FFFFFF;}
+		div.navbar-inner, .navbar .nav li ul{background:#DDDDDD;color:#222222;}
+		a.btn-navbar{background:#DDDDDD;color:#222222;}
+		.navbar .nav li a{color:#222222;text-shadow:1px 1px 0px #EEEEEE;}
+		.navbar .nav li a:hover, .navbar .nav li.active a{text-shadow:none;}
+		div.navbar-inner ul{}
+		.marketing-byline{color:#FFFFFF;}
+		.navbar .nav > li a{color:#444444;}
+		.navbar .nav > li a:hover, a.btn-navbar:hover{background:#444444;color:#DDDDDD;}
+		.navbar .nav .active > a, .navbar .nav .active > a:hover, a.btn-navbar:active{background-color:#444444;color:#DDDDDD;}
+		.navbar .nav li ul li a:hover{background:#444444;color:#DDDDDD;}
+		.navbar .nav li ul li a:active{background:#444444;color:#DDDDDD;}
+		.btn-primary {
+			  background-image: -moz-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -ms-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -webkit-gradient(linear, 0 0, 0 0088CC%, from(#DDDDDD), to(#0044CC));
+			  background-image: -webkit-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: -o-linear-gradient(top, #0088CC, #0044CC);
+			  background-image: linear-gradient(top, #0088CC, #0044CC);
+			  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088CC', endColorstr='#0044CC', GradientType=0);
+			  border-color: #0044CC #0044CC #bfbfbf;
+			  color:#FFFFFF;
+		}
+		.btn-primary:hover,
+		.btn-primary:active,
+		.btn-primary.active,
+		.btn-primary.disabled,
+		.btn-primary[disabled] {
+		  background-color: #0044CC;
+		}
+		#documenter_copyright{display:block !important;visibility:visible !important;}
+	</style>
+
+	
+	
+    </head>
+
+<body class="documenter-project-react-native-messenger-app-with-backend" data-spy="scroll" id="top">
+
+<!-- Documentation Navbar -->
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+			<a class="brand" href="#">React Native Messenger App With Backend - Based on Expo</a>
+			<div class="nav-collapse">
+			<ul class="nav">
+					
+			<li><a href="#how_to_install" title="How to install">How to install</a></li>
+			<li><a href="#file_structure" title="File structure">File structure</a></li>
+			<li><a href="#how_to_add_localization" title="How to add localization">How to add localization</a></li>
+			<li><a href="#how_to_customize" title="How to customize">How to customize</a></li>
+			<li><a href="#" title=""></a></li>
+
+			</ul>
+			</div>
+		</div>
+	</div>
+</div> <!-- End of Navbar -->
+
+<!-- Main Container Beginning -->
+
+<div class="container" id="documenter_content">
+
+	<div id="documenter-cover">
+	<div class="masthead">
+	    <h1>React Native Messenger App With Backend - Based on Expo</h1>
+	    <p>A full messenger application with dialogs, statuses read/unread, push notifications and the ability to upload and send photos. </p>
+	    <ul class="marketing-byline">
+			<li>created: 01/07/2019</li>
+			<li>latest update: 08/04/2019</li>
+			<li>by: Artem Bogoslavskiy</li>
+			
+		</ul>
+	    <p class="download-info">
+			
+		</p>
+
+	</div> <!-- masthead -->
+
+   <div id="intro">
+    <p class="highlight hero-unit">Thank you for purchasing my theme. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form here. Thanks so much!</p>
+   </div> <!-- intro -->
+
+	</div>
+
+  <section id="how_to_install">
+	<div class="page-header"><h3>How to install</h3><hr class="notop"></div>
+<p>
+	<span data-key="27b7262300c247cfb60008490e420782">This guide describes how to install the application and server solely to run on an emulator. To run the application on a real device, you need to start your server and specify the hosts of your server in </span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="1d9f35f2925645d6a30ec9414c37098c" href="https://luice96.gitbook.io/messenger/config-file#messenger-app" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="a9df068291374c3d8bef40bb40190910">Config file</span></a><span data-key="cd4f80ce910c43c0a34510e353bacf2f"><span data-offset-key="cd4f80ce910c43c0a34510e353bacf2f:0">. To start your server, you need to install everything as described in this guide and start the server using the flag </span><span data-offset-key="cd4f80ce910c43c0a34510e353bacf2f:1"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">production</code></span><span data-offset-key="cd4f80ce910c43c0a34510e353bacf2f:2"> </span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="9bac86de7efc449ca97114586cf3db86" href="https://luice96.gitbook.io/messenger/installation#running-on-production" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="5e78c9ae7a4740e48043c68c2b8b82ee">See here</span></a><span data-key="108afad79b0d478ca678635bd2549105" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlRoaXMlMjBndWlkZSUyMGRlc2NyaWJlcyUyMGhvdyUyMHRvJTIwaW5zdGFsbCUyMHRoZSUyMGFwcGxpY2F0aW9uJTIwYW5kJTIwc2VydmVyJTIwc29sZWx5JTIwdG8lMjBydW4lMjBvbiUyMGFuJTIwZW11bGF0b3IuJTIwVG8lMjBydW4lMjB0aGUlMjBhcHBsaWNhdGlvbiUyMG9uJTIwYSUyMHJlYWwlMjBkZXZpY2UlMkMlMjB5b3UlMjBuZWVkJTIwdG8lMjBzdGFydCUyMHlvdXIlMjBzZXJ2ZXIlMjBhbmQlMjBzcGVjaWZ5JTIwdGhlJTIwaG9zdHMlMjBvZiUyMHlvdXIlMjBzZXJ2ZXIlMjBpbiUyMCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyaW5saW5lJTIyJTJDJTIydHlwZSUyMiUzQSUyMmxpbmslMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlMjJocmVmJTIyJTNBJTIyaHR0cHMlM0ElMkYlMkZsdWljZTk2LmdpdGJvb2suaW8lMkZtZXNzZW5nZXIlMkZjb25maWctZmlsZSUyM21lc3Nlbmdlci1hcHAlMjIlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMkNvbmZpZyUyMGZpbGUlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMi4lMjBUbyUyMHN0YXJ0JTIweW91ciUyMHNlcnZlciUyQyUyMHlvdSUyMG5lZWQlMjB0byUyMGluc3RhbGwlMjBldmVyeXRoaW5nJTIwYXMlMjBkZXNjcmliZWQlMjBpbiUyMHRoaXMlMjBndWlkZSUyMGFuZCUyMHN0YXJ0JTIwdGhlJTIwc2VydmVyJTIwdXNpbmclMjB0aGUlMjBmbGFnJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMnByb2R1Y3Rpb24lMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMCUyMCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyaW5saW5lJTIyJTJDJTIydHlwZSUyMiUzQSUyMmxpbmslMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlMjJocmVmJTIyJTNBJTIyaHR0cHMlM0ElMkYlMkZsdWljZTk2LmdpdGJvb2suaW8lMkZtZXNzZW5nZXIlMkZpbnN0YWxsYXRpb24lMjNydW5uaW5nLW9uLXByb2R1Y3Rpb24lMjIlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlNlZSUyMGhlcmUlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMi4lMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCU1RCU3RA==">.</span></p>
+<h1>
+	<span style="white-space: pre;">Installation and running on localhost</span></h1>
+<p>
+	&nbsp;</p>
+<h2>
+	<span style="white-space: pre;">Video guide </span></h2>
+<p>
+	<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/J4d5lJLC0BQ" width="560"></iframe></p>
+<p>
+	&nbsp;</p>
+<p>
+	&nbsp;</p>
+<h2 class="blockHeadingContent-756c9114">
+	<span class="text-4505230f--HeadingH700-04e1a2a3--textContentFamily-49a318e1">1. Socket Server</span></h2>
+<div class="blockHeadingContent-756c9114">
+	&nbsp;</div>
+<div class="blockHeadingContent-756c9114">
+	Socket server uses Redis for messaging between API and socket server</div>
+<p class="blockParagraph-544a408c" data-key="56a7431843fc47128ab0278bcbb4c813">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="708f2093d4bb4c37b9ec87341f7c2bac"><span data-offset-key="708f2093d4bb4c37b9ec87341f7c2bac:0">First we need to install and run Redis. You can use </span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="31b702007ddd49a686efbe9322cccfbb" href="https://redis.io/topics/quickstart" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="1a058da6cb534e8e9f2dc8ef83db1f0c"><span data-offset-key="1a058da6cb534e8e9f2dc8ef83db1f0c:0">Redis installation guide</span></span></a><span data-key="3af325eab2354347a812365ab5d5b8eb"><span data-offset-key="3af325eab2354347a812365ab5d5b8eb:0"> </span></span></span></p>
+<p class="blockParagraph-544a408c" data-key="211b624ba5fd4d0fb7649f26bb1533e3">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="440d25aeec1444e0a06ee23014ea553e"><span data-offset-key="440d25aeec1444e0a06ee23014ea553e:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Starting Redis</strong></span></span></span></p>
+<div class="codeBlock-18b09018">
+	<div data-key="7f5cea5a27284310b2acc6293ead657d">
+		<div class="alert alert-success" data-key="570e9bf4c2b64dd9a7ebd5cfa70e1b2a">
+			<span data-key="20b1031b30d94d1a9e5208c89046bb57">$ redis-server</span></div>
+		<div class="codeLine-3035e01e" data-key="570e9bf4c2b64dd9a7ebd5cfa70e1b2a">
+			&nbsp;</div>
+		<div class="codeLine-3035e01e" data-key="570e9bf4c2b64dd9a7ebd5cfa70e1b2a">
+			<span data-key="cb2c765f4b59485f9a6b7875b59d7ada"><span data-offset-key="cb2c765f4b59485f9a6b7875b59d7ada:0">You can set a password for Redis, after which you will need to enter the Redis password into config file socket server and api server. See </span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="07019ac448e545ce9e2f70bf88129c07" href="/messenger/config-file" style="color: rgb(56, 132, 255);"><span data-key="2ca3da5b10e545d3984b2fb311ec451a"><span data-offset-key="2ca3da5b10e545d3984b2fb311ec451a:0">Config file</span></span></a></div>
+	</div>
+</div>
+<p class="blockParagraph-544a408c" data-key="243c858105b14fb6bc74183442975d59">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="7e17ba65594a498eacefc7344671d4c9"><span data-offset-key="7e17ba65594a498eacefc7344671d4c9:0"><strong class="bold-3c254bd9" data-slate-leaf="true">In </strong></span><span data-offset-key="7e17ba65594a498eacefc7344671d4c9:1"><code class="code-81e98f88--codeBold-3c254bd9" data-slate-leaf="true" spellcheck="false"><strong class="bold-3c254bd9" data-slate-leaf="true">socket-server</strong></code></span><span data-offset-key="7e17ba65594a498eacefc7344671d4c9:2"><strong class="bold-3c254bd9" data-slate-leaf="true"> directory</strong></span></span></span></p>
+<div class="alert alert-success" data-key="243c858105b14fb6bc74183442975d59">
+	$ yarn install</div>
+<p class="blockParagraph-544a408c" data-key="ea412b93208a41318390d32290a224c9">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="254f09f74abd444e9eb778800433a97a"><span data-offset-key="254f09f74abd444e9eb778800433a97a:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Next</strong></span></span></span></p>
+<div class="alert alert-success" data-key="ea412b93208a41318390d32290a224c9">
+	$ yarn development</div>
+<h2>
+	&nbsp;</h2>
+<h2>
+	<span data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJoZWFkaW5nLTElMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMjIuJTIwQVBJJTIwU2VydmVyJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdE" style="white-space: pre;">2. API Server</span></h2>
+<p>
+	<span data-key="c1c4c547de514549b529ab9436a78984"><span data-offset-key="c1c4c547de514549b529ab9436a78984:0">First install MongoDB. </span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="53acfc885fcf42a586ba812215cb9d2b" href="https://docs.mongodb.com/manual/installation/" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="908863ec7d47409e9919adac2913f319"><span data-offset-key="908863ec7d47409e9919adac2913f319:0">Installation Guide</span></span></a><span data-key="176c5dbe05a54bd4afc56399d531eac5"><span data-offset-key="176c5dbe05a54bd4afc56399d531eac5:0">.</span></span></p>
+<p class="blockParagraph-544a408c" data-key="1c676f24a63e4df1b8bf39b82214696c">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="0c9acdb4b02a4082a189bea4434789d8"><span data-offset-key="0c9acdb4b02a4082a189bea4434789d8:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Starting MongoDB</strong></span></span></span></p>
+<div class="alert alert-success" data-key="1c676f24a63e4df1b8bf39b82214696c">
+	<span data-offset-key="caef0edba9af418283272a1d47b8d6fc:0">$ </span><span data-offset-key="caef0edba9af418283272a1d47b8d6fc:1"><span class="prism-token token 1 function ">mkdir</span></span><span data-offset-key="caef0edba9af418283272a1d47b8d6fc:2"><span class="prism-token token 2"> messenger</span></span></div>
+<div class="codeBlock-18b09018">
+	<div data-key="d994a5ee83324d5cba82f9ec4d4bf523">
+		<div class="alert alert-success" data-key="241fa77bbde74fec9a29860e59ebd119">
+			<span data-key="e6ae2c30fdd343a1b9ec6346d662f09a">$ mongod --dbpath messenger</span></div>
+	</div>
+</div>
+<p class="blockParagraph-544a408c" data-key="64f70c489cfe485ebfc29482d213a543">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="16ce66a629ae4e13ab7d8ff8f29c0e72"><span data-offset-key="16ce66a629ae4e13ab7d8ff8f29c0e72:0"><strong class="bold-3c254bd9" data-slate-leaf="true">In </strong></span><span data-offset-key="16ce66a629ae4e13ab7d8ff8f29c0e72:1"><code class="code-81e98f88--codeBold-3c254bd9" data-slate-leaf="true" spellcheck="false"><strong class="bold-3c254bd9" data-slate-leaf="true">messenger-api</strong></code></span><span data-offset-key="16ce66a629ae4e13ab7d8ff8f29c0e72:2"><strong class="bold-3c254bd9" data-slate-leaf="true"> directory</strong></span></span></span></p>
+<div class="alert alert-success" data-key="64f70c489cfe485ebfc29482d213a543">
+	$ yarn install</div>
+<div class="codeBlock-18b09018" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMkZpcnN0JTIwaW5zdGFsbCUyME1vbmdvREIuJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJpbmxpbmUlMjIlMkMlMjJ0eXBlJTIyJTNBJTIybGluayUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiUyMmhyZWYlMjIlM0ElMjJodHRwcyUzQSUyRiUyRmRvY3MubW9uZ29kYi5jb20lMkZtYW51YWwlMkZpbnN0YWxsYXRpb24lMkYlMjIlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMkluc3RhbGxhdGlvbiUyMEd1aWRlJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIuJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlN0YXJ0aW5nJTIwTW9uZ29EQiUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJib2xkJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUtdGFiJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTIyc3ludGF4JTIyJTNBJTIyYmFzaCUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS1saW5lJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjQlMjBta2RpciUyMG1lc3NlbmdlciUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS1saW5lJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjQlMjBtb25nb2QlMjAtLWRicGF0aCUyMG1lc3NlbmdlciUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIycGFyYWdyYXBoJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJJbiUyMCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJib2xkJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIybWVzc2VuZ2VyLWFwaSUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJib2xkJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMGRpcmVjdG9yeSUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJib2xkJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUtdGFiJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTIyc3ludGF4JTIyJTNBJTIydGV4dCUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS1saW5lJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjQlMjB5YXJuJTIwaW5zdGFsbCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS1saW5lJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjQlMjB5YXJuJTIwZGV2ZWxvcG1lbnQlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmhlYWRpbmctMSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlNUQlN0Q=">
+	<div data-key="8a7ba41139124dbca63f28911da7d9b9">
+		<div class="alert alert-success" data-key="a66b086809f14684bc59616c3527be07">
+			<span data-key="14c6a09dedf1459386ba38d97cb31c39">$ yarn development</span></div>
+	</div>
+</div>
+<h1 class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="38f1bfc94db740d4ac7ce163746efa42" id="3-setup-aws-s3">
+	&nbsp;</h1>
+<h2>
+	<span data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJoZWFkaW5nLTElMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMjMuJTIwU2V0dXAlMjBBV1MlMjBTMyUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdE" style="white-space: pre;">3. Setup AWS S3</span></h2>
+<p>
+	<a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="b4d4268951314090a491492c4d8afe44" href="https://medium.com/@shamnad.p.s/how-to-create-an-s3-bucket-and-aws-access-key-id-and-secret-access-key-for-accessing-it-5653b6e54337" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="b284256fe2c144828c57ac3e283107db"><span data-offset-key="b284256fe2c144828c57ac3e283107db:0">How to create bucket</span></span></a></p>
+<p class="blockParagraph-544a408c" data-key="908ffc316efb442ca0a3d76b97975ef5" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmlubGluZSUyMiUyQyUyMnR5cGUlMjIlM0ElMjJsaW5rJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTIyaHJlZiUyMiUzQSUyMmh0dHBzJTNBJTJGJTJGbWVkaXVtLmNvbSUyRiU0MHNoYW1uYWQucC5zJTJGaG93LXRvLWNyZWF0ZS1hbi1zMy1idWNrZXQtYW5kLWF3cy1hY2Nlc3Mta2V5LWlkLWFuZC1zZWNyZXQtYWNjZXNzLWtleS1mb3ItYWNjZXNzaW5nLWl0LTU2NTNiNmU1NDMzNyUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIySG93JTIwdG8lMjBjcmVhdGUlMjBidWNrZXQlMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIycGFyYWdyYXBoJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmlubGluZSUyMiUyQyUyMnR5cGUlMjIlM0ElMjJsaW5rJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTIyaHJlZiUyMiUzQSUyMmh0dHBzJTNBJTJGJTJGZG9jcy5hd3MuYW1hem9uLmNvbSUyRmVuX3VzJTJGQW1hem9uUzMlMkZsYXRlc3QlMkZ1c2VyLWd1aWRlJTJGYWRkLWJ1Y2tldC1wb2xpY3kuaHRtbCUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIySG93JTIwdG8lMjBhZGQlMjBQb2xpY3klMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdE">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="a52cf218c216401c8540058bcceafd00" style="color: rgb(56, 132, 255);"><span data-offset-key="a52cf218c216401c8540058bcceafd00:0"><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="653428a20c7542418278fb8efe563e77" href="https://docs.aws.amazon.com/en_us/AmazonS3/latest/user-guide/add-bucket-policy.html" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank">How to add Policy&nbsp;</a></span></span></span></p>
+<pre>
+{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Sid&quot;: &quot;Stmt1458840156000&quot;,
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Action&quot;: [
+                &quot;s3:GetObject&quot;,
+                &quot;s3:GetObjectAcl&quot;,
+                &quot;s3:GetObjectVersion&quot;,
+                &quot;s3:PutObject&quot;,
+                &quot;s3:PutObjectAcl&quot;,
+                &quot;s3:PutObjectVersionAcl&quot;
+            ],
+            &quot;Resource&quot;: [
+                &quot;arn:aws:s3:::my-bucket/*&quot;
+            ]
+        }
+    ]
+}
+
+</pre>
+<p class="blockParagraph-544a408c" data-key="fc67d67743d848baacac61ca89538f5f">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="02e0445d246a416ba6709816be328097"><span data-offset-key="02e0445d246a416ba6709816be328097:0">When </span><span data-offset-key="02e0445d246a416ba6709816be328097:1"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">my-bucket</code></span><span data-offset-key="02e0445d246a416ba6709816be328097:2"> is your bucket name</span></span></span></p>
+<p class="blockParagraph-544a408c" data-key="3a7fcdc7d5244c2982ceca459d1037f1" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMldoZW4lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIybXktYnVja2V0JTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjBpcyUyMHlvdXIlMjBidWNrZXQlMjBuYW1lJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlB1dCUyMHlvdXIlMjBBV1MlMjBTMyUyMGRhdGElMjBpbnRvJTIwY29uZmlnJTIwZmlsZS4lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJpbmxpbmUlMjIlMkMlMjJ0eXBlJTIyJTNBJTIybGluayUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiUyMmhyZWYlMjIlM0ElMjJodHRwcyUzQSUyRiUyRmx1aWNlOTYuZ2l0Ym9vay5pbyUyRm1lc3NlbmdlciUyRmNvbmZpZy1maWxlJTIzbWVzc2VuZ2VyLWFwcCUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyTW9yZSUyMGhlcmUlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlNUQlN0QlNUQlN0Q=">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e409f827a6cd4dfdb0ba2495cd67cdfb"><span data-offset-key="e409f827a6cd4dfdb0ba2495cd67cdfb:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Put your AWS S3 data into config file. </strong></span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="c7cf1201cedf404cac41506f008ce8f6" href="https://luice96.gitbook.io/messenger/config-file#messenger-app" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="61f295ae816b4fc2b92f62c60d0ff6f2"><span data-offset-key="61f295ae816b4fc2b92f62c60d0ff6f2:0"><strong class="bold-3c254bd9" data-slate-leaf="true">More here</strong></span></span></a></span></p>
+<p class="blockParagraph-544a408c" data-key="3a7fcdc7d5244c2982ceca459d1037f1" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMldoZW4lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIybXktYnVja2V0JTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjBpcyUyMHlvdXIlMjBidWNrZXQlMjBuYW1lJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlB1dCUyMHlvdXIlMjBBV1MlMjBTMyUyMGRhdGElMjBpbnRvJTIwY29uZmlnJTIwZmlsZS4lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJpbmxpbmUlMjIlMkMlMjJ0eXBlJTIyJTNBJTIybGluayUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiUyMmhyZWYlMjIlM0ElMjJodHRwcyUzQSUyRiUyRmx1aWNlOTYuZ2l0Ym9vay5pbyUyRm1lc3NlbmdlciUyRmNvbmZpZy1maWxlJTIzbWVzc2VuZ2VyLWFwcCUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyTW9yZSUyMGhlcmUlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlNUQlN0QlNUQlN0Q=">
+	&nbsp;</p>
+<h2 class="blockParagraph-544a408c" data-key="3a7fcdc7d5244c2982ceca459d1037f1" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMldoZW4lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIybXktYnVja2V0JTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjBpcyUyMHlvdXIlMjBidWNrZXQlMjBuYW1lJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlB1dCUyMHlvdXIlMjBBV1MlMjBTMyUyMGRhdGElMjBpbnRvJTIwY29uZmlnJTIwZmlsZS4lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJpbmxpbmUlMjIlMkMlMjJ0eXBlJTIyJTNBJTIybGluayUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiUyMmhyZWYlMjIlM0ElMjJodHRwcyUzQSUyRiUyRmx1aWNlOTYuZ2l0Ym9vay5pbyUyRm1lc3NlbmdlciUyRmNvbmZpZy1maWxlJTIzbWVzc2VuZ2VyLWFwcCUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyTW9yZSUyMGhlcmUlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyYm9sZCUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlNUQlN0QlNUQlN0Q=">
+	<span style="white-space: pre;">4. Messenger Application.</span></h2>
+<p>
+	<span data-offset-key="08192c803f70419da80b3d368321193d:0"><strong class="bold-3c254bd9" data-slate-leaf="true">In </strong></span><span data-offset-key="08192c803f70419da80b3d368321193d:1"><code class="code-81e98f88--codeBold-3c254bd9" data-slate-leaf="true" spellcheck="false"><strong class="bold-3c254bd9" data-slate-leaf="true">messenger-app</strong></code></span><span data-offset-key="08192c803f70419da80b3d368321193d:2"><strong class="bold-3c254bd9" data-slate-leaf="true"> directory</strong></span></p>
+<div class="alert alert-success">
+	$ yarn install</div>
+<div class="codeBlock-18b09018" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMkluJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJtZXNzZW5nZXItYXBwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTIwZGlyZWN0b3J5JTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS10YWIlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlMjJzeW50YXglMjIlM0ElMjJ0ZXh0JTIyJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlLWxpbmUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyNCUyMHlhcm4lMjBpbnN0YWxsJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlLWxpbmUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyNCUyMGV4cG8lMjBzdGFydCUyMCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyaGVhZGluZy0xJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCU1RCU3RA==">
+	<div data-key="c1e2567a1c9e40fb9e6997e5c7da0ad2">
+		<div class="alert alert-success" data-key="cbe6047c8d6140ada8e1d0753190e878">
+			<span data-key="a594323040f14faa9796b70d09c99df7">$ expo start </span></div>
+	</div>
+</div>
+<p class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="a85928893e0d4ced902aeddfcfa54fb8">
+	&nbsp;</p>
+<h2 class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="a85928893e0d4ced902aeddfcfa54fb8">
+	Running on Production</h2>
+<p class="blockHeading-442b4f12--blockHeading1WithMargin-b69d755e" data-key="a85928893e0d4ced902aeddfcfa54fb8">
+	&nbsp;</p>
+<div class="blockHeadingContent-756c9114">
+	<div class="blockHeadingContent-756c9114">
+		<span data-key="a01c777e01554684a59d5be5e436b9cd"><span data-offset-key="a01c777e01554684a59d5be5e436b9cd:0">To run Socket Server and API server, uses the package </span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="18ad3bc103dc41febed3085b4690acbc" href="https://pm2.io/doc/en/runtime/overview/" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="9d02a658b771494f9994dbfeb4ef38ed"><span data-offset-key="9d02a658b771494f9994dbfeb4ef38ed:0">PM2</span></span></a><span data-key="dcfba38e816f4be1a14c85f3c457cd6c"><span data-offset-key="dcfba38e816f4be1a14c85f3c457cd6c:0">.</span></span></div>
+	<p class="blockParagraph-544a408c" data-key="ff952f927f8849c39362f8238885b1cb">
+		<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="ef7dfa27af1246d3aa9728543ee74f1d"><span data-offset-key="ef7dfa27af1246d3aa9728543ee74f1d:0">To start the process PM2, you can use commands: </span><span data-offset-key="ef7dfa27af1246d3aa9728543ee74f1d:1"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">yarn production</code></span><span data-offset-key="ef7dfa27af1246d3aa9728543ee74f1d:2"> this will launch a server with configurations for production, </span><span data-offset-key="ef7dfa27af1246d3aa9728543ee74f1d:3"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">yarn staging</code></span><span data-offset-key="ef7dfa27af1246d3aa9728543ee74f1d:4"> this will launch a server with configurations for staging. See </span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="3773cecc0bf343a98289e1cd06164d7e" href="/messenger/config-file" style="color: rgb(56, 132, 255);"><span data-key="c1a3627d034949b482ceb52af7ff7d25"><span data-offset-key="c1a3627d034949b482ceb52af7ff7d25:0">Config file</span></span></a><span data-key="45fecdc534ec4f8f98a6cd724f915d6c"><span data-offset-key="45fecdc534ec4f8f98a6cd724f915d6c:0">.</span></span></span></p>
+	<p class="blockParagraph-544a408c" data-key="ff952f927f8849c39362f8238885b1cb">
+		To run you need to change config files</p>
+	<p class="blockParagraph-544a408c" data-key="e54d5d7bbb6146f4861ff7241751dfac">
+		<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="1aaf4c7c92334f91a20a820729276409"><span data-offset-key="1aaf4c7c92334f91a20a820729276409:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Socket server</strong></span></span></span></p>
+	<div class="alert alert-success" data-key="e54d5d7bbb6146f4861ff7241751dfac">
+		$ yarn production</div>
+	<p class="blockParagraph-544a408c" data-key="e54d5d7bbb6146f4861ff7241751dfac">
+		or</p>
+	<div class="alert alert-success" data-key="e54d5d7bbb6146f4861ff7241751dfac">
+		$ yarn staging</div>
+	<p class="blockParagraph-544a408c" data-key="9185526d87a7479da28f8cdf161c4554">
+		<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="686c22a875a94d9098d770537e3c808f"><span data-offset-key="686c22a875a94d9098d770537e3c808f:0"><strong class="bold-3c254bd9" data-slate-leaf="true">API Server</strong></span></span></span></p>
+	<div class="alert alert-success" data-key="9185526d87a7479da28f8cdf161c4554">
+		<span style="background-color: rgb(252, 248, 227); color: rgb(70, 136, 71);">$ yarn build</span></div>
+	<div class="codeBlock-18b09018">
+		<div data-key="007d6f29b8c14eed9e38feeeaf754af6">
+			<div class="alert alert-success" data-key="ccb1346f50904c56a194d9a905576eb4">
+				<span data-key="40be6475306e490e865148677d9cfa82">$ yarn production </span></div>
+			<div class="codeLine-3035e01e" data-key="c57e7b0f4566491195fb5095bd0bf54b">
+				<span data-key="ec8577bc9bf64114b9ad3b7f9f23a6c5">&nbsp;or </span></div>
+			<div class="alert alert-success" data-key="7c1e055efe364355b7c3fb1763001a0e">
+				<span data-key="9ae9e24ef89b42ba89b0c335c422f46b">&nbsp;$ yarn staging</span></div>
+		</div>
+	</div>
+	<p class="blockParagraph-544a408c" data-key="8ba64fdcf8474f1da7dc16169ace0037">
+		<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="4b49e23bdadd404aac3440c8c080b7f2"><span data-offset-key="4b49e23bdadd404aac3440c8c080b7f2:0"><strong class="bold-3c254bd9" data-slate-leaf="true">Messenger Application</strong></span></span></span></p>
+	<p class="blockParagraph-544a408c" data-key="039651b056a746e98ddbdc89f9736af6" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJoZWFkaW5nLTElMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlJ1bm5pbmclMjBvbiUyMFByb2R1Y3Rpb24lMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMnBhcmFncmFwaCUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyVG8lMjBydW4lMjBTb2NrZXQlMjBTZXJ2ZXIlMjBhbmQlMjBBUEklMjBzZXJ2ZXIlMkMlMjB1c2VzJTIwdGhlJTIwcGFja2FnZSUyMCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyaW5saW5lJTIyJTJDJTIydHlwZSUyMiUzQSUyMmxpbmslMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlMjJocmVmJTIyJTNBJTIyaHR0cHMlM0ElMkYlMkZwbTIuaW8lMkZkb2MlMkZlbiUyRnJ1bnRpbWUlMkZvdmVydmlldyUyRiUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyUE0yJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIuJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlRvJTIwc3RhcnQlMjB0aGUlMjBwcm9jZXNzJTIwUE0yJTJDJTIweW91JTIwY2FuJTIwdXNlJTIwY29tbWFuZHMlM0ElMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyeWFybiUyMHByb2R1Y3Rpb24lMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMCUyMHRoaXMlMjB3aWxsJTIwbGF1bmNoJTIwYSUyMHNlcnZlciUyMHdpdGglMjBjb25maWd1cmF0aW9ucyUyMGZvciUyMHByb2R1Y3Rpb24lMkMlMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyeWFybiUyMHN0YWdpbmclMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMHRoaXMlMjB3aWxsJTIwbGF1bmNoJTIwYSUyMHNlcnZlciUyMHdpdGglMjBjb25maWd1cmF0aW9ucyUyMGZvciUyMHN0YWdpbmcuJTIwU2VlJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJpbmxpbmUlMjIlMkMlMjJ0eXBlJTIyJTNBJTIybGluayUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiUyMnBhZ2VJRCUyMiUzQSUyMi1MZTdrbjM5TUNpUC1obDduckw0JTIyJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJDb25maWclMjBmaWxlJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIuJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJibG9ja3F1b3RlJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlRvJTIwcnVuJTIweW91JTIwbmVlZCUyMHRvJTIwY2hhbmdlJTIwY29uZmlnJTIwZmlsZXMlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMnBhcmFncmFwaCUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyU29ja2V0JTIwc2VydmVyJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS10YWIlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUtbGluZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTI0JTIweWFybiUyMHByb2R1Y3Rpb24lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUtbGluZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTIzJTIwb3IlMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUtbGluZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTIzJTIwJTI0JTIweWFybiUyMHN0YWdpbmclMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMnBhcmFncmFwaCUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyQVBJJTIwU2VydmVyJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS10YWIlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUtbGluZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTI0JTIweWFybiUyMGJ1aWxkJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlLWxpbmUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyNCUyMHlhcm4lMjBwcm9kdWN0aW9uJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlLWxpbmUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMyUyMG9yJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlLWxpbmUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMyUyMCUyNCUyMHlhcm4lMjBzdGFnaW5nJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMk1lc3NlbmdlciUyMEFwcGxpY2F0aW9uJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIycGFyYWdyYXBoJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJKdXN0JTIwc2V0JTIwcHJvZHVjdGlvbiUyMG1vZGUuJTIwU2VlJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJib2xkJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmlubGluZSUyMiUyQyUyMnR5cGUlMjIlM0ElMjJsaW5rJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTIyaHJlZiUyMiUzQSUyMmh0dHBzJTNBJTJGJTJGZG9jcy5leHBvLmlvJTJGdmVyc2lvbnMlMkZsYXRlc3QlMkZ3b3JrZmxvdyUyRmRldmVsb3BtZW50LW1vZGUlMkYlMjIlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMmhlcmUlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMi4lMjBUaGlzJTIwd2lsbCUyMGxhdW5jaCUyMEV4cG8lMjB3aXRoJTIwYSUyMHByb2R1Y3Rpb24lMjBjb25maWd1cmF0aW9uLiUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdE">
+		<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="9df0b7d8ca644e32a1a85eb683f2f33e"><span data-offset-key="9df0b7d8ca644e32a1a85eb683f2f33e:0">Just set production mode. See</span><span data-offset-key="9df0b7d8ca644e32a1a85eb683f2f33e:1"><strong class="bold-3c254bd9" data-slate-leaf="true"> </strong></span></span><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="c587d76616324df9a73f99fe643abbfa" href="https://docs.expo.io/versions/latest/workflow/development-mode/" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="644edbc048194424bd6dd430b3d3e581"><span data-offset-key="644edbc048194424bd6dd430b3d3e581:0">here</span></span></a><span data-key="11748658ee8f4e7fb4ee3f7e4964229f"><span data-offset-key="11748658ee8f4e7fb4ee3f7e4964229f:0">. This will launch Expo with a production configuration.</span></span></span></p>
+</div>
+<p>
+	&nbsp;</p>
+</section>
+<section id="file_structure">
+	<div class="page-header"><h3>File structure</h3><hr class="notop"></div>
+<p class="p1">
+	<span class="s1">|-- messenger-api</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- src</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- methods</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- AccountMethods.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- AuthMethods.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ContactsMethods.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- MessagesMethods.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- UserMethods.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- models</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- AccessTokenModel.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ContactsModel.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- DeviceTokenModel.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- DialogsModel.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- MessagesModel.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- UserModel.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- utils</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ErrorMessages.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Notification.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- index.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- config.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- server.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- ecosystem.config.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- package.json</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>`-- yarn.lock</span></p>
+<p class="p1">
+	<span class="s1">|-- messenger-app</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- assets</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- fonts</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- SpaceMono-Regular.ttf</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- images</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; &nbsp; &nbsp; </span>|-- icon.png</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; &nbsp; &nbsp; </span>`-- splash.png</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- components</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ImageCache</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- CacheManager.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Image.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- index.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Items</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- DialogItem.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- MessageItem.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- UserItem.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Loading</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- LoadingIndicator.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- LoadingOverlay.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- LoadingTextIndicator.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- UI</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- BlueButton.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Button.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Input.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Link.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- List.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ListItem.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- index.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Badge.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- DialogsIconWithBadge.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- EmtyText.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ErrorMessage.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- HeaderRightButton.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Image.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- InputUsername.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- PhoneInput.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- TabBarIcon.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- TopBarNotification.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- UploadPhotoProgress.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- UploadUserPicture.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- UserPicture.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- constants</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Colors.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Date.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- Layout.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- containers</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- MessagesContainer.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- context</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- LoadingOverlayContext.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- MessageUploaderContext.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- ModalizeContext.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- modalize</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- SearchModalize.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- index.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- navigation</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- AppNavigator.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- MainTabNavigator.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- MainTabNavigatorWrapper.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- NavigationService.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- redux</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- actions</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- BadgeActions.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ConversationActions.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- DialogsActions.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- UserActions.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- reducers</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- BadgeReducer.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ConversationsReducer.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- DialogsReducer.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- UserReducer.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- index.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- selectors.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- store.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- screens</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Auth</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- AuthLoadingScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- SignInScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- SignUpScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Settings</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ChangePasswordScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- ChangeProfileScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ContactsScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ConversationScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- DialogsScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ImageViewerScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- PhonePickerScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- SettingsScreen.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- translations</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- en.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- index.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- utils</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ImagePicker.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- ProgressUploader.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- Uploader.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- index.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- App.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- SocketClient.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- api.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- app.json</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- babel.config.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- config.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- package.json</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>`-- registerForPushNotificationsAsync.js</span></p>
+<p class="p1">
+	<span class="s1">|-- socket-server</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- src</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>|-- config.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>| <span class="Apple-converted-space">&nbsp; </span>`-- server.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>|-- ecosystem.config.js</span></p>
+<p class="p1">
+	<span class="s1">| <span class="Apple-converted-space">&nbsp; </span>`-- package.json</span></p>
+<p class="p1">
+	<span class="s1">`-- README.md</span></p>
+<p>
+	<style type="text/css">
+p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px Menlo; color: #000000}
+span.s1 {font-variant-ligatures: no-common-ligatures}	</style>
+</p>
+</section>
+<section id="how_to_add_localization">
+	<div class="page-header"><h3>How to add localization</h3><hr class="notop"></div>
+<p class="blockParagraph-544a408c" data-key="b60a8d22b8f545b79d050a746521f574">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="e749d9cf34044cab9e5f085c2d6462ed"><span data-offset-key="e749d9cf34044cab9e5f085c2d6462ed:0">All translations are in </span><span data-offset-key="e749d9cf34044cab9e5f085c2d6462ed:1"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">translations</code></span><span data-offset-key="e749d9cf34044cab9e5f085c2d6462ed:2"> directory.</span></span></span></p>
+<p class="blockParagraph-544a408c" data-key="19f191df16bb4110802beb70b4916878">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="00c8ea3768de474c8c15af0a6ea24bde"><span data-offset-key="00c8ea3768de474c8c15af0a6ea24bde:0">To add a new language, create a file in </span><span data-offset-key="00c8ea3768de474c8c15af0a6ea24bde:1"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">translations</code></span><span data-offset-key="00c8ea3768de474c8c15af0a6ea24bde:2">directory with the name in the format ISO 639-1 </span></span></span></p>
+<h2 class="blockHeading-442b4f12--blockHeading2WithMargin-532d771d" data-key="eb3ed368d8ba410f9c5787ccf7c2a854" id="example">
+	<span style="font-size: 12px;">Example</span></h2>
+<div class="codeBlock-18b09018">
+	<div data-key="a22a5422dc214820a077ad2ff2a686c5">
+		<pre class="js" data-key="373a8521bd2c4026863bd052687d6151">
+<span data-key="a06e22c571104853b7aed0c0ae59831a"><span data-offset-key="a06e22c571104853b7aed0c0ae59831a:0"><span class="prism-token token keyword ">export</span></span><span data-offset-key="a06e22c571104853b7aed0c0ae59831a:1"><span class="prism-token token 1"> </span></span><span data-offset-key="a06e22c571104853b7aed0c0ae59831a:2"><span class="prism-token token 2 keyword ">default</span></span><span data-offset-key="a06e22c571104853b7aed0c0ae59831a:3"><span class="prism-token token 3"> </span></span><span data-offset-key="a06e22c571104853b7aed0c0ae59831a:4"><span class="prism-token token 4 punctuation ">{</span></span></span>
+<span data-key="d0f8cfe7683a4522b5af22cdebaeb2fb"><span data-offset-key="d0f8cfe7683a4522b5af22cdebaeb2fb:0"><span class="prism-token token 5">  first_name</span></span><span data-offset-key="d0f8cfe7683a4522b5af22cdebaeb2fb:1"><span class="prism-token token 6 punctuation ">:</span></span><span data-offset-key="d0f8cfe7683a4522b5af22cdebaeb2fb:2"><span class="prism-token token 7"> </span></span><span data-offset-key="d0f8cfe7683a4522b5af22cdebaeb2fb:3"><span class="prism-token token 8 string ">&#39;Pr&eacute;nom&#39;</span></span></span>
+<span data-key="13f3b4c14921436892dcacbb28666908">}</span></pre>
+	</div>
+</div>
+<p class="blockParagraph-544a408c" data-key="61008009c42c44c6b806805707c72a07">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="8e078226bd62436d84798b60f18ac1aa"><span data-offset-key="8e078226bd62436d84798b60f18ac1aa:0">Translate all keys, then import the file into </span><span data-offset-key="8e078226bd62436d84798b60f18ac1aa:1"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">translations/index.js</code></span><span data-offset-key="8e078226bd62436d84798b60f18ac1aa:2"> and add to the export object.</span></span></span></p>
+<p class="blockParagraph-544a408c" data-key="03c376652b8b4fbbb608f7a71ac3451e" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMkFsbCUyMHRyYW5zbGF0aW9ucyUyMGFyZSUyMGluJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMnRyYW5zbGF0aW9ucyUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTIwZGlyZWN0b3J5LiUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIycGFyYWdyYXBoJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJUbyUyMGFkZCUyMGElMjBuZXclMjBsYW5ndWFnZSUyQyUyMGNyZWF0ZSUyMGElMjBmaWxlJTIwJTIwaW4lMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIydHJhbnNsYXRpb25zJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJkaXJlY3RvcnklMjB3aXRoJTIwdGhlJTIwbmFtZSUyMGluJTIwdGhlJTIwZm9ybWF0JTIwSVNPJTIwNjM5LTElMjAlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmhlYWRpbmctMiUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyRXhhbXBsZSUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS10YWIlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlMjJzeW50YXglMjIlM0ElMjJqYXZhc2NyaXB0JTIyJTJDJTIydGl0bGUlMjIlM0ElMjJ0cmFuc2xhdGlvbnMlMkZmci5qcyUyMiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZS1saW5lJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJleHBvcnQlMjBkZWZhdWx0JTIwJTdCJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlLWxpbmUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMCUyMCUyMCUyMGZpcnN0X25hbWUlM0ElMjAnUHIlQzMlQTlub20nJTJDJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJjb2RlLWxpbmUlMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiU3RCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIyYmxvY2slMjIlMkMlMjJ0eXBlJTIyJTNBJTIycGFyYWdyYXBoJTIyJTJDJTIyaXNWb2lkJTIyJTNBZmFsc2UlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJUcmFuc2xhdGUlMjBhbGwlMjBrZXlzJTJDJTIwdGhlbiUyMGltcG9ydCUyMHRoZSUyMGZpbGUlMjBpbnRvJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMnRyYW5zbGF0aW9ucyUyRmluZGV4LmpzJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmNvZGUlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjIlMjBhbmQlMjBhZGQlMjB0byUyMHRoZSUyMGV4cG9ydCUyMG9iamVjdC4lMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMnBhcmFncmFwaCUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJpbmxpbmUlMjIlMkMlMjJ0eXBlJTIyJTNBJTIybGluayUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiUyMmhyZWYlMjIlM0ElMjJodHRwcyUzQSUyRiUyRmRvY3MuZXhwby5pbyUyRnZlcnNpb25zJTJGbGF0ZXN0JTJGc2RrJTJGbG9jYWxpemF0aW9uJTJGJTIyJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJ0ZXh0JTIyJTJDJTIybGVhdmVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJSZWFkJTIwbW9yZSUyMG9uJTIwRXhwby4lMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMiUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTVEJTdEJTVEJTdEJTVEJTdEJTVEJTdE">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><a class="link-a079aa82--primary-53a25e66--link-faf6c434" data-key="5b0839406e1140edabc74bb9dd78f756" href="https://docs.expo.io/versions/latest/sdk/localization/" rel="noopener noreferrer" style="color: rgb(56, 132, 255);" target="_blank"><span data-key="d14ea66df2ee408f96d306f53f866f93"><span data-offset-key="d14ea66df2ee408f96d306f53f866f93:0">Read more on Expo.</span></span></a></span></p>
+</section>
+<section id="how_to_customize">
+	<div class="page-header"><h3>How to customize</h3><hr class="notop"></div>
+<h1 class="blockHeading-442b4f12" data-key="9aad3a2ae0ea4728ada8fa0bac7f1a27" id="color-palette-and-react-navigation-style">
+	<span data-offset-key="756e3c151e0d416081217db4c534aed1:0" style="font-size: 12px;">C</span><span data-offset-key="756e3c151e0d416081217db4c534aed1:1" style="font-size: 12px;"><strong class="bold-3c254bd9" data-slate-leaf="true">olor palette and React Navigation style</strong></span></h1>
+<div class="blockHeadingContent-756c9114">
+	&nbsp;</div>
+<div class="blockHeadingContent-756c9114">
+	You can change the color palette of some components and React Navigation style</div>
+<p class="blockParagraph-544a408c" data-key="62cf6e53b7564d1a94c4231f7a170968" data-slate-fragment="JTdCJTIyb2JqZWN0JTIyJTNBJTIyZG9jdW1lbnQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTJDJTIybm9kZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJoZWFkaW5nLTElMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMkMlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyb2xvciUyMHBhbGV0dGUlMjBhbmQlMjBSZWFjdCUyME5hdmlnYXRpb24lMjBzdHlsZSUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIybWFyayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJib2xkJTIyJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCU3RCU1RCU3RCU1RCU3RCU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmJsb2NrJTIyJTJDJTIydHlwZSUyMiUzQSUyMnBhcmFncmFwaCUyMiUyQyUyMmlzVm9pZCUyMiUzQWZhbHNlJTJDJTIyZGF0YSUyMiUzQSU3QiU3RCUyQyUyMm5vZGVzJTIyJTNBJTVCJTdCJTIyb2JqZWN0JTIyJTNBJTIydGV4dCUyMiUyQyUyMmxlYXZlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyWW91JTIwY2FuJTIwY2hhbmdlJTIwdGhlJTIwY29sb3IlMjBwYWxldHRlJTIwb2YlMjBzb21lJTIwY29tcG9uZW50cyUyMGFuZCUyMFJlYWN0JTIwTmF2aWdhdGlvbiUyMHN0eWxlJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlNUQlN0QlNUQlN0QlNUQlN0QlMkMlN0IlMjJvYmplY3QlMjIlM0ElMjJibG9jayUyMiUyQyUyMnR5cGUlMjIlM0ElMjJwYXJhZ3JhcGglMjIlMkMlMjJpc1ZvaWQlMjIlM0FmYWxzZSUyQyUyMmRhdGElMjIlM0ElN0IlN0QlMkMlMjJub2RlcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMnRleHQlMjIlMkMlMjJsZWF2ZXMlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJsZWFmJTIyJTJDJTIydGV4dCUyMiUzQSUyMlRoZSUyMG1haW4lMjBzdHlsZXMlMjBmaWxlJTIwaXMlMjBsb2NhdGVkJTIwaW4lMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU1RCU3RCUyQyU3QiUyMm9iamVjdCUyMiUzQSUyMmxlYWYlMjIlMkMlMjJ0ZXh0JTIyJTNBJTIyJTIwJTIyJTJDJTIybWFya3MlMjIlM0ElNUIlN0IlMjJvYmplY3QlMjIlM0ElMjJtYXJrJTIyJTJDJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlMkMlMjJkYXRhJTIyJTNBJTdCJTdEJTdEJTVEJTdEJTJDJTdCJTIyb2JqZWN0JTIyJTNBJTIybGVhZiUyMiUyQyUyMnRleHQlMjIlM0ElMjJjb25zdGFudHMlMkZDb2xvcnMuanMlMjIlMkMlMjJtYXJrcyUyMiUzQSU1QiU3QiUyMm9iamVjdCUyMiUzQSUyMm1hcmslMjIlMkMlMjJ0eXBlJTIyJTNBJTIyY29kZSUyMiUyQyUyMmRhdGElMjIlM0ElN0IlN0QlN0QlNUQlN0QlNUQlN0QlNUQlN0QlNUQlN0Q=">
+	<span class="text-4505230f--TextH400-3033861f--textContentFamily-49a318e1"><span data-key="5e6a36dce1214959b122cf61750233ac"><span data-offset-key="5e6a36dce1214959b122cf61750233ac:0">The main styles file is located in</span><span data-offset-key="5e6a36dce1214959b122cf61750233ac:1"><strong class="bold-3c254bd9" data-slate-leaf="true"> </strong></span><span data-offset-key="5e6a36dce1214959b122cf61750233ac:2"><code class="code-81e98f88" data-slate-leaf="true" spellcheck="false">constants/Colors.js</code></span></span></span></p>
+<pre>
+const tintColor = &#39;#5a5a5a&#39;;
+
+export default {
+  tintColor,
+  tabIconDefault: &#39;#b2b2b2&#39;,
+  tabIconSelected: tintColor,
+  primary: &#39;#528bcc&#39;,
+  secondary: &#39;#efefef&#39;,
+  danger: &#39;#ff314c&#39;,
+  text: &#39;#525252&#39;
+};
+
+export const tabBarOptions = {
+  style: {
+    shadowColor: &#39;rgb(46, 61, 73)&#39;,
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.1,
+    shadowRadius: 7,
+    borderTopWidth: 0,
+    elevation: 20
+  },
+  showLabel: false
+};
+
+export const navigatorOptions = {
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: &#39;#fff&#39;,
+      borderBottomWidth: 0,
+      shadowColor: &#39;#2e3d4980&#39;,
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.1,
+      shadowRadius: 7
+    },
+    headerTintColor: &#39;#2d2d2d&#39;
+  }
+};
+</pre>
+</section>
+<section id="">
+	<div class="page-header"><h3></h3><hr class="notop"></div>
+</section>
+
+
+
+    <hr />
+
+<footer>
+    <p>Copyright Artem Bogoslavskiy 2019 made with the <a href="https://evp.to/documenter">Documenter v2.0</a></p>
+</footer>
+
+</div><!-- /container -->
+
+<!-- Le javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script>document.createElement('section');var duration='500',easing='swing';</script>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery.scrollTo.js"></script>
+<script src="assets/js/jquery.easing.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script src="assets/js/google-code-prettify/prettify.js"></script>
+<script src="assets/js/bootstrap-min.js"></script>
+</body>
+</html>
