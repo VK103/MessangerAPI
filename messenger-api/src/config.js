@@ -7,7 +7,10 @@ const ENV = {
     redis: {
       host: 'localhost',
       port: 6379
-    }
+    },
+    emailUser: 'vaibhavakabari10@gmail.com',
+    emailPass: 'fgxmrsqqznhalylp',
+    emailService: 'gmail'
   },
   production: {
     port: 3000, // node server port
@@ -17,7 +20,10 @@ const ENV = {
       host: '<redis-host>',
       port: 6379,
       password: '<redis-password>' // Optional, if the password for redis exists
-    }
+    },
+    emailUser: '<email-user>',
+    emailPass: '<email-pass>',
+    emailService: '<email-service>'
   },
   staging: {
     port: 3000, // node server port
@@ -27,7 +33,10 @@ const ENV = {
       host: '<redis-host>',
       port: 6379,
       password: '<redis-password>' // Optional, if the password for redis exists
-    }
+    },
+    emailUser: '<email-user>',
+    emailPass: '<email-pass>',
+    emailService: '<email-service>'
   }
 };
 

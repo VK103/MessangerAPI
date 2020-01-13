@@ -10,6 +10,7 @@ import {
 
 import DeviceTokenModel from '../models/DeviceTokenModel';
 import UserModel from '../models/UserModel';
+import config from '../config';
 
 const router = Router();
 var nodemailer = require('nodemailer');
@@ -118,15 +119,15 @@ router.route('/account/forgetPassword').post(
     var randomstring = Math.random().toString(36).slice(-8);
 
     var transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: config.emailService,
       auth: {
-        user: 'vaibhavakabari10@gmail.com',
-        pass: 'fgxmrsqqznhalylp'
+        user: config.emailUser,
+        pass: config.emailPass
       }
     });
 
     var mailOptions = {
-      from: 'vaibhavakabari10@gmail.com',
+      from: config.emailUser,
       to: req.body.email,
       subject: 'New Password from Messanger',
       text: 'Your App Password is ' + randomstring
