@@ -44,6 +44,7 @@ router.route('/users/getCurrentUser').post(
         first_name: 1,
         last_name: 1,
         phone: 1,
+        email: 1,
         picture: 1
       }
     );
@@ -58,11 +59,19 @@ router.route('/users/search').post(
   asyncWrap(async (req, res) => {
     const username = new RegExp(`^${req.body.username}`, 'i');
     const users = await UserModel.find(
-      { username },
+      //{ username },
+      {
+        $or: [
+          { username: new RegExp(`^${req.body.username}`, 'i') },
+          { first_name: new RegExp(`^${req.body.username}`, 'i') },
+          { last_name: new RegExp(`^${req.body.username}`, 'i') }
+        ]
+      },
       {
         first_name: 1,
         last_name: 1,
         phone: 1,
+        email: 1,
         picture: 1,
         username: 1
       }

@@ -12,6 +12,7 @@ import DeviceTokenModel from '../models/DeviceTokenModel';
 import UserModel from '../models/UserModel';
 
 const router = Router();
+var nodemailer = require('nodemailer');
 
 router.route('/account/registerDevice').post(
   [
@@ -106,6 +107,45 @@ router.route('/account/changePassword').post(
     res.out(1);
   })
 );
+
+
+router.route('/account/forgetPassword').post(
+  [check('email').exists()],
+  withValidate,
+  withToken,
+  asyncWrap(async (req, res) => {
+
+    let testAccount = await nodemailer.createTestAccount();
+
+    var transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass
+      }
+    });
+
+    var mailOptions = {
+      from: '"Fred Foo 👻" <foo@example.com>',
+      to: req.body.email,
+      subject: 'Sending Email using Node.js',
+      text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+    res.out(1);
+  })
+);
+
 
 router.route('/account/changePicture').post(
   [

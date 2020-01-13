@@ -12,7 +12,7 @@ const router = Router();
 const getToken = async (req, res) => {
   const { phone, password } = req.body;
 
-  const user = await UserModel.findOne({ phone });
+  const user = await UserModel.findOne({ $or: [{ phone: phone }, { email: phone }, { username: phone }] });
 
   if (!user || !user.checkPassword(password)) {
     throw new ErrorAPI(1002);
@@ -38,6 +38,7 @@ const getToken = async (req, res) => {
     _id: user._id,
     first_name: user.first_name,
     last_name: user.last_name,
+    email: user.email,
     username: user.username,
     picture: user.picture
   });
@@ -54,6 +55,7 @@ router
 router.route('/auth/signUp').post(
   [
     check('phone').exists(),
+    check('email').exists(),
     check('first_name').exists(),
     check('last_name').exists(),
     check('password').exists(),
@@ -61,7 +63,7 @@ router.route('/auth/signUp').post(
   ],
   withValidate,
   asyncWrap(async (req, res) => {
-    const { phone, first_name, last_name, password, username } = req.body;
+    const { phone, email, first_name, last_name, password, username } = req.body;
 
     const existUser = await UserModel.findOne({ phone }, { _id: 1 }).lean();
     if (existUser) {
@@ -70,6 +72,7 @@ router.route('/auth/signUp').post(
 
     let user = new UserModel({
       phone,
+      email,
       first_name,
       last_name,
       password,
