@@ -115,23 +115,21 @@ router.route('/account/forgetPassword').post(
   withToken,
   asyncWrap(async (req, res) => {
 
-    let testAccount = await nodemailer.createTestAccount();
+    var randomstring = Math.random().toString(36).slice(-8);
 
     var transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      secure: false,
+      service: 'gmail',
       auth: {
-        user: testAccount.user,
-        pass: testAccount.pass
+        user: 'vaibhavakabari10@gmail.com',
+        pass: 'fgxmrsqqznhalylp'
       }
     });
 
     var mailOptions = {
-      from: '"Fred Foo 👻" <foo@example.com>',
+      from: 'vaibhavakabari10@gmail.com',
       to: req.body.email,
-      subject: 'Sending Email using Node.js',
-      text: 'That was easy!'
+      subject: 'New Password from Messanger',
+      text: 'Your App Password is ' + randomstring
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
