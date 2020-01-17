@@ -77,6 +77,45 @@ export default class Notification {
       }
     }
   }
+
+  async sendRequestPushNotification({ recipient_id, sender, message, title }) {
+    //const title = `${sender.first_name} ${sender.last_name}`;
+    const tokens = await DeviceTokenModel.find({
+      user_id: recipient_id
+    });
+
+    if (tokens.length < 1) {
+      return;
+    }
+
+    let messages = [];
+    for (let pushToken of tokens) {
+      if (!Expo.isExpoPushToken(pushToken.token)) {
+        console.error(
+          `Push token ${pushToken.token} is not a valid Expo push token`
+        );
+        continue;
+      }
+
+      messages.push({
+        //ttl: 5,
+        to: pushToken.token,
+        sound: 'default',
+        body: message,
+        title,
+        data: { message, sender }
+      });
+    }
+
+    let chunks = expo.chunkPushNotifications(messages);
+    for (let chunk of chunks) {
+      try {
+        await expo.sendPushNotificationsAsync(chunk);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }
 }
 
 function getBodyNotification(message) {

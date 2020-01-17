@@ -11,6 +11,7 @@ import UserMethods from './methods/UserMethods';
 import AccountMethods from './methods/AccountMethods';
 import MessagesMethods from './methods/MessagesMethods';
 import ContactsMethods from './methods/ContactsMethods';
+import FriendMethods from './methods/FriendMethods';
 
 const notification = new Notification(config.redis);
 const app = express();
@@ -30,6 +31,7 @@ app.use(UserMethods);
 app.use(AccountMethods);
 app.use(MessagesMethods);
 app.use(ContactsMethods);
+app.use(FriendMethods);
 
 app.use(errorsMiddleware);
 

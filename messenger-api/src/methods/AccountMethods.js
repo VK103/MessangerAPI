@@ -113,35 +113,53 @@ router.route('/account/changePassword').post(
 router.route('/account/forgetPassword').post(
   [check('email').exists()],
   withValidate,
-  withToken,
+  //withToken,
   asyncWrap(async (req, res) => {
 
-    var randomstring = Math.random().toString(36).slice(-8);
+    var { email } = req.body;
 
-    var transporter = nodemailer.createTransport({
-      service: config.emailService,
-      auth: {
-        user: config.emailUser,
-        pass: config.emailPass
+    UserModel.findOne({ email }, async function (err, user) {
+
+      if (err) {
+        throw new ErrorAPI(0);
       }
-    });
 
-    var mailOptions = {
-      from: config.emailUser,
-      to: req.body.email,
-      subject: 'New Password from Messanger',
-      text: 'Your App Password is ' + randomstring
-    };
+      if (user) {
+        var randomstring = Math.random().toString(36).slice(-8);
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
+        var transporter = nodemailer.createTransport({
+          service: config.emailService,
+          auth: {
+            user: config.emailUser,
+            pass: config.emailPass
+          }
+        });
+
+        var mailOptions = {
+          from: config.emailUser,
+          to: req.body.email,
+          subject: 'New Password from Messanger',
+          text: 'Your App Password is ' + randomstring
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+            res.out(0);
+          } else {
+            console.log('Email sent: ' + info.response);
+            res.out(1);
+          }
+        });
       } else {
-        console.log('Email sent: ' + info.response);
+        res.out(0)
       }
-    });
 
-    res.out(1);
+    })
+
+
+
+
   })
 );
 

@@ -19,5 +19,6 @@ export default {
   1003: 'Application does not exist',
   1004: 'This phone is used by another user',
   1005: 'User is not exist. Need sign up user',
-  1006: 'Error calculate signature'
+  1006: 'Error calculate signature',
+  1007: 'User is not exist.'
 };

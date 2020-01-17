@@ -34,6 +34,9 @@ const User = new mongoose.Schema(
     salt: {
       type: String
     },
+    status: {
+      type: String
+    },
     timestamp: {
       type: Number,
       default: timestamp
@@ -42,28 +45,28 @@ const User = new mongoose.Schema(
   { versionKey: false }
 );
 
-User.methods.encryptPassword = function(password) {
+User.methods.encryptPassword = function (password) {
   return crypto
     .createHmac('sha1', this.salt)
     .update(password)
     .digest('hex');
 };
 
-User.virtual('_uid').get(function() {
+User.virtual('_uid').get(function () {
   return this.id;
 });
 
 User.virtual('password')
-  .set(function(password) {
+  .set(function (password) {
     this._plainPassword = password;
     this.salt = crypto.randomBytes(32).toString('base64');
     this.hashedPassword = this.encryptPassword(password);
   })
-  .get(function() {
+  .get(function () {
     return this._plainPassword;
   });
 
-User.methods.checkPassword = function(password) {
+User.methods.checkPassword = function (password) {
   return this.encryptPassword(password) === this.hashedPassword;
 };
 
