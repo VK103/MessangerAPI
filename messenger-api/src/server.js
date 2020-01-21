@@ -12,6 +12,7 @@ import AccountMethods from './methods/AccountMethods';
 import MessagesMethods from './methods/MessagesMethods';
 import ContactsMethods from './methods/ContactsMethods';
 import FriendMethods from './methods/FriendMethods';
+import ImageMethods from './methods/ImageMethods';
 
 const notification = new Notification(config.redis);
 const app = express();
@@ -32,8 +33,12 @@ app.use(AccountMethods);
 app.use(MessagesMethods);
 app.use(ContactsMethods);
 app.use(FriendMethods);
+app.use(ImageMethods);
 
 app.use(errorsMiddleware);
+
+//Public Directory
+app.use('/uploads', express.static('uploads'));
 
 app.listen(config.port, () =>
   console.log(`App listening on port ${config.port}!`)

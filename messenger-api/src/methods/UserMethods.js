@@ -9,6 +9,7 @@ import {
 } from '../utils';
 
 import UserModel from '../models/UserModel';
+import FriendModel from '../models/FriendModel';
 
 const router = Router();
 
@@ -56,6 +57,7 @@ router.route('/users/getCurrentUser').post(
 router.route('/users/search').post(
   [check('username').exists()],
   withValidate,
+  withToken,
   asyncWrap(async (req, res) => {
     const username = new RegExp(`^${req.body.username}`, 'i');
     const users = await UserModel.find(
@@ -76,8 +78,40 @@ router.route('/users/search').post(
         username: 1
       }
     ).limit(10);
+    
+    let arrUsers = []
+    for (var user of users) {
 
-    res.out(users);
+      let isFriend = await FriendModel.findOne({
+        $or: [{ $and: [{ sender_id: req.token.user_id }, { receiver_id: user._id }, { accept: true }] },
+        { $and: [{ sender_id: user._id }, { receiver_id: req.token.user_id }, { accept: true }] }]
+      })
+
+      let requestSent = await FriendModel.findOne(
+        { $and: [{ sender_id: req.token.user_id }, { receiver_id: user._id }, { accept: false }] }
+      )
+
+      let requestReceive = await FriendModel.findOne(
+        { $and: [{ sender_id: user._id }, { receiver_id: req.token.user_id }, { accept: false }] }
+      )
+
+      //isFriend ? user.isFriend = true : user.isFriend = false
+      if (isFriend) {
+        user.status = "accepted"
+      } else if (requestSent) {
+        user.status = "request_send"
+      } else if (requestReceive) {
+        user.status = "request_receive"
+      } else {
+        user.status = "none"
+      }
+
+      console.log('user1: ', user._id, "  ", 'user2: ', req.token.user_id);
+
+      arrUsers.push(user)
+    }
+
+    res.out(arrUsers);
   })
 );
 

@@ -5,6 +5,7 @@ import { withToken, withValidate, asyncWrap, ErrorAPI } from '../utils';
 import MessagesModel from '../models/MessagesModel';
 import DialogsModel from '../models/DialogsModel';
 import UserModel from '../models/UserModel';
+import FriendModel from '../models/FriendModel';
 
 async function getDialog(sender_id, recipient_id) {
   let dialog = await DialogsModel.findOne(
@@ -185,9 +186,42 @@ router.route('/messages/getDialogs').post(
       unread: 1
     }).countDocuments();
 
+    var arrDialogs = [];
+    for (var dialog of dialogs) {
+
+      let isFriend = await FriendModel.findOne({
+        $or: [{ $and: [{ sender_id: req.token.user_id }, { receiver_id: dialog.member._id }, { accept: true }] },
+        { $and: [{ sender_id: dialog.member._id }, { receiver_id: req.token.user_id }, { accept: true }] }]
+      })
+
+      let requestSent = await FriendModel.findOne(
+        { $and: [{ sender_id: req.token.user_id }, { receiver_id: dialog.member._id }, { accept: false }] }
+      )
+
+      let requestReceive = await FriendModel.findOne(
+        { $and: [{ sender_id: dialog.member._id }, { receiver_id: req.token.user_id }, { accept: false }] }
+      )
+
+      //isFriend ? user.isFriend = true : user.isFriend = false
+      if (isFriend) {
+        dialog.member.status = "accepted"
+      } else if (requestSent) {
+        dialog.member.status = "request_send"
+      } else if (requestReceive) {
+        dialog.member.status = "request_receive"
+      } else {
+        dialog.member.status = "none"
+      }
+
+      console.log('user1: ', dialog.member._id, "  ", 'user2: ', req.token.user_id);
+
+      arrDialogs.push(dialog)
+
+    }
+
     res.out({
       unread_count,
-      items: dialogs
+      items: arrDialogs
     });
   })
 );

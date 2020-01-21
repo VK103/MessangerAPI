@@ -103,7 +103,7 @@ export default class Notification {
         sound: 'default',
         body: message,
         title,
-        data: { message, sender }
+        data: { message, sender, type: 'request' }
       });
     }
 

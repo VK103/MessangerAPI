@@ -45,8 +45,8 @@ router.route('/friend/request').post(
                     let newFriend = new FriendModel()
                     newFriend.sender_id = req.token.user_id
                     newFriend.receiver_id = receiver_id
-                    await newFriend.save()
-                    res.out(newFriend);
+                    let friendObj = await newFriend.save()
+                    res.out(friendObj);
                 }
 
                 // For notification
@@ -56,6 +56,11 @@ router.route('/friend/request').post(
                 );
 
                 let recipient_id = receiver_id;
+
+                req.notification.to(recipient_id).emit('newRequest', {
+                    message: sender.first_name + " " + sender.last_name + " " + "Sent you request.",
+                    sender
+                });
 
                 req.notification.sendRequestPushNotification({
                     recipient_id,
@@ -103,6 +108,7 @@ router.route('/friend/list').post(
         let pageSize = page_length ? page_length : 10
 
         if (type === 'all') {
+
             var query = UserModel.find(
                 { _id: { $ne: req.token.user_id } },
                 {
@@ -130,15 +136,25 @@ router.route('/friend/list').post(
                     for (const user of users) {
 
                         let isFriend = await FriendModel.findOne({
-                            $or: [{ $and: [{ sender_id: req.token.user_id }, { receiver_id: user._id }] },
-                            { $and: [{ sender_id: user._id }, { receiver_id: req.token.user_id }] }]
+                            $or: [{ $and: [{ sender_id: req.token.user_id }, { receiver_id: user._id }, { accept: true }] },
+                            { $and: [{ sender_id: user._id }, { receiver_id: req.token.user_id }, { accept: true }] }]
                         })
 
+                        let requestSent = await FriendModel.findOne(
+                            { $and: [{ sender_id: req.token.user_id }, { receiver_id: user._id }, { accept: false }] }
+                        )
+
+                        let requestReceive = await FriendModel.findOne(
+                            { $and: [{ sender_id: user._id }, { receiver_id: req.token.user_id }, { accept: false }] }
+                        )
+
                         //isFriend ? user.isFriend = true : user.isFriend = false
-                        if (isFriend && isFriend.accept == true) {
+                        if (isFriend) {
                             user.status = "accepted"
-                        } else if (isFriend && isFriend.accept == false) {
-                            user.status = "requested"
+                        } else if (requestSent) {
+                            user.status = "request_send"
+                        } else if (requestReceive) {
+                            user.status = "request_receive"
                         } else {
                             user.status = "none"
                         }
@@ -152,6 +168,7 @@ router.route('/friend/list').post(
                 }
 
             })
+
         } else if (type === 'friend') {
             var query = UserModel.find(
                 { _id: { $ne: req.token.user_id } },
@@ -222,14 +239,26 @@ router.route('/friend/list').post(
                     let arrUsers = []
                     for (const user of users) {
 
-                        let isFriend = await FriendModel.findOne({
-                            $and: [{ sender_id: user._id }, { receiver_id: req.token.user_id }, { accept: false }]
-                        })
+                        let requestSent = await FriendModel.findOne(
+                            { $and: [{ sender_id: req.token.user_id }, { receiver_id: user._id }, { accept: false }] }
+                        )
+
+                        let requestReceive = await FriendModel.findOne(
+                            { $and: [{ sender_id: user._id }, { receiver_id: req.token.user_id }, { accept: false }] }
+                        )
 
                         //isFriend ? user.isFriend = true : user.isFriend = false
-                        if (isFriend) { user.status = "requested" }
+                        if (requestSent) {
+                            user.status = "request_send"
+                        } else if (requestReceive) {
+                            user.status = "request_receive"
+                        } else {
+                            user.status = "none"
+                        }
+
+                        //isFriend ? user.isFriend = true : user.isFriend = false
                         console.log('user1: ', user._id, "  ", 'user2: ', req.token.user_id);
-                        if (isFriend) arrUsers.push(user)
+                        if (requestSent || requestReceive) arrUsers.push(user)
                     }
 
                     res.out(arrUsers)

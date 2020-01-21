@@ -1,42 +1,32 @@
 const ENV = {
   development: {
     port: 3000, // node server port
-    //mongoURI: 'mongodb://localhost:27017/messenger',
-    mongoURI: 'mongodb://127.0.0.1:27017/messenger?retryWrites=true&w=majority',
+    mongoURI: 'mongodb://localhost:27017/messenger',
     socket_secret: 'SOCKET SECRET',
     redis: {
       host: 'localhost',
       port: 6379
-    },
-    emailUser: 'vaibhavakabari10@gmail.com',
-    emailPass: 'fgxmrsqqznhalylp',
-    emailService: 'gmail'
+    }
   },
   production: {
     port: 3000, // node server port
-    mongoURI: 'mongodb://<mongo-host>:27017/messenger',
+    mongoURI: 'mongodb://localhost:27017/messenger',
     socket_secret: 'SOCKET SECRET',
     redis: {
-      host: '<redis-host>',
+      host: 'localhost',
       port: 6379,
-      password: '<redis-password>' // Optional, if the password for redis exists
-    },
-    emailUser: '<email-user>',
-    emailPass: '<email-pass>',
-    emailService: '<email-service>'
+      //password: '<redis-password>' // Optional, if the password for redis exists
+    }
   },
   staging: {
     port: 3000, // node server port
-    mongoURI: 'mongodb://<mongo-host>:27017/messenger',
+    mongoURI: 'mongodb://localhost:27017/messenger',
     socket_secret: 'SOCKET SECRET',
     redis: {
-      host: '<redis-host>',
+      host: 'localhost',
       port: 6379,
-      password: '<redis-password>' // Optional, if the password for redis exists
-    },
-    emailUser: '<email-user>',
-    emailPass: '<email-pass>',
-    emailService: '<email-service>'
+      //password: '<redis-password>' // Optional, if the password for redis exists
+    }
   }
 };
 
